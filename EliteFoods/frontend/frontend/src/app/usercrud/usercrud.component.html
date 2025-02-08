@@ -1,0 +1,143 @@
+<main>
+    <h2>Add new user</h2>
+    <form (ngSubmit)="onSubmit()" id="new">
+        <div class="group">
+            <label for="name">Username:</label><br>
+            <input type="text"  [(ngModel)]="user.felhasznalo.felhasznalonev" name="felhasznalonev" id="name" >
+        </div>
+        <div class="group">
+            <label for="country">Country:</label><br>
+            <input type="text" [(ngModel)]="user.felhasznalo.cim.orszag" name="country"  id="country" >
+        </div>
+        <div class="group">
+            <label for="email">Email:</label><br>
+            <input type="email" [(ngModel)]="user.felhasznalo.email_cim" name="email" id="email" >
+        </div>
+        <div class="group">
+            <label for="town">Town:</label><br>
+            <input type="text" [(ngModel)]="user.felhasznalo.cim.varos" name="varos" id="town">
+        </div>
+        <div class="group">
+            <label for="fname">First name:</label><br>
+            <input type="text" [(ngModel)]="user.felhasznalo.keresztnev" name="keresztnev" id="fname">
+        </div>
+        <div class="group">
+            <label for="zip_code">ZIP_code:</label><br>
+            <input type="text" [(ngModel)]="user.felhasznalo.cim.iranyitoszam"  name="iranyitoszam" id="zip_code">
+        </div>
+        <div class="group">
+            <label for="lname">Last name:</label><br>
+            <input type="text" [(ngModel)]="user.felhasznalo.vezeteknev"  name="vezeteknev" id="lname">
+        </div>
+        <div class="group">
+            <label for="street">Street:</label><br>
+            <input type="text" [(ngModel)]="user.felhasznalo.cim.kozterulet" name="utca" id="street">
+        </div>
+        <div class="group">
+            <label for="password">Password:</label><br>
+            <input type="password" [(ngModel)]="user.felhasznalo.jelszo" name="jelszo" id="password">
+        </div>
+
+        <div class="group">
+            <label for="password_again">password again:</label><br>
+            <input type="password" name="confirm" [(ngModel)]="jelszoConfirm" name="jelszoconfirm" id="password_again">
+        </div>
+        <div class="group">
+            <label for="number">House number:</label><br>
+            <input type="text" [(ngModel)]="user.felhasznalo.cim.hazszam"  name="hazszam" id="number">
+        </div>
+        <div class="group">
+            <label for="phone">Phone:</label><br>
+            <input type="text" [(ngModel)]="user.felhasznalo.telefonszam"  name="telefonszam" id="phone">
+        </div>
+        <div class="group" id="radios">
+            <input type="radio" name="permission" value="felhasználó" [checked]="true" [(ngModel)]="user.role.nev"   >User<br>
+            <input type="radio" name="permission" value="boltos" [(ngModel)]="user.role.nev">Shop assistant<br>
+            <input type="radio" name="permission" value="admin" [(ngModel)]="user.role.nev">Admin<br>
+
+        </div>
+        
+
+
+
+        <input type="submit" value="Add user">
+            
+
+    </form>
+    <div>
+        <p>{{message}}</p>
+    </div>
+    <hr>
+    <h2>Delete user</h2>
+    <div *ngIf="loading"> Loading...</div>
+    <div *ngIf="error">{{error}}</div>
+    <div id="users" *ngIf="!loading && !error">
+        <div class="user" *ngFor="let contact of users" >
+            <div><img src="../../assets/icons/default_pfp.jpg" alt=""></div>
+            <div >{{contact.azonosito}}</div>
+            <div >{{contact.felhasznalonev}}</div>
+            <div >{{contact.vezeteknev+" "+contact.keresztnev}}</div>
+            <div class="email" >{{contact.email_cim}}</div>
+            <div><a>
+
+                <input type="hidden" name="_method" value="DELETE"> <button (click)="deleteUser(contact.azonosito)" class="delete-button">
+                    <img src="../../assets/icons/trashcan_red.png">
+                </button>
+            </a></div>
+        </div>
+
+
+    </div>
+    <hr>
+    <h2>Update user</h2>
+    <div *ngIf="loading"> Loading...</div>
+    <div *ngIf="error">{{error}}</div>
+    <table *ngIf="!loading && !error">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of users">
+              <td>
+                <form (ngSubmit)="save(contact)">
+                  <input type="text" name="id" [(ngModel)]="contact.azonosito" readonly>
+                </form>
+              </td>
+              <td>
+                <form (ngSubmit)="save(contact)">
+                  <input type="text" name="username" [(ngModel)]="contact.felhasznalonev" readonly>
+                </form>
+              </td>
+              <td>
+                <form (ngSubmit)="save(contact)">
+                  <input type="text" name="name" [(ngModel)]="contact.keresztnev" required>
+                </form>
+              </td>
+              <td>
+                <form (ngSubmit)="save(contact)">
+                  <input type="email" name="email" [(ngModel)]="contact.email_cim" required>
+                </form>
+              </td>
+              <td>
+                <form (ngSubmit)="save(contact)">
+                  <input type="text" name="phone" [(ngModel)]="contact.telefonszam">
+                </form>
+              </td>
+              <td>
+                <form (ngSubmit)="save(contact)">
+                  <button type="submit">Save</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+    </table>
+
+</main>
+

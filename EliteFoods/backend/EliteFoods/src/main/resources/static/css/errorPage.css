@@ -1,0 +1,108 @@
+html {
+    background-color: #FFF1C1;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.error-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-bottom: 4rem;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 2rem;
+    margin: 3rem 0;
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 0;
+    color: #ED0000;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    font-weight: 500;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 2rem 0;
+}
+
+.button-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.home-button, .products-button {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.home-button {
+    background-color: #fef2f2;
+    color: #ED0000;
+}
+
+.products-button {
+    background-color: #ED0000;
+    color: white;
+}
+
+.home-button:hover, .products-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 1px 6px 8px rgba(0, 0, 0, 0.25);
+}
+
+.home-button:active, .products-button:active {
+    transform: translateY(1px);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .home-button, .products-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .error-container {
+        margin-bottom: 3rem;
+    }
+}

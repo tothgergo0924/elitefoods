@@ -1,0 +1,27 @@
+
+<div class="egesz">
+<h1>Log in</h1>
+    <div class="szoveg">
+
+
+<h2>Please  enter your username and password below</h2>
+    <div class="vonal"></div>
+
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+    <div class="mezo">
+        <label for="username"></label>
+        <input type="text" id="username"  name="felhasznalonev" placeholder="Username" [(ngModel)]="credentials.username"  required>
+    </div>
+    <div class="mezo">
+        <label for="password"></label>
+        <input type="password" id="password" name="jelszo" placeholder="Password" [(ngModel)]="credentials.password"  required>
+    </div>
+        <p *ngIf="message" [class.success]="token" [class.error]="!token" >{{message}}</p>
+    <button type="submit">Log in</button>
+
+
+</form>
+</div>
+

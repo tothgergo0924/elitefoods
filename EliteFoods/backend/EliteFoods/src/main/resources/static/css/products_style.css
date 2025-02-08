@@ -1,0 +1,346 @@
+html{
+    background-color: #FFF1C1;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+    margin:0px;
+}
+
+#tartalom{
+    margin: auto;
+    margin-top: 50px;
+    display: block;
+    width: 60%;
+}
+
+#search_and_filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#filter_label{
+    color: brown;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: -20px;
+}
+
+#filters_area {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on mobile */
+}
+
+#search_area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 50%;}
+
+.filter {
+    display: inline-block;
+    background-color: white;
+    border: 1px solid brown;
+    border-radius: 20px;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 18px;
+    color: brown;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter input[type="checkbox"] {
+    display: none;
+}
+
+.filter:has(input[type="checkbox"]:checked ){
+    background-color: brown;
+    color: white;
+}
+
+
+.sort:has(input[type="checkbox"]:checked ){
+    background-color: brown;
+    color: white;
+}
+.sort input[type="checkbox"] {
+    display: none;
+}
+
+.filter:hover {
+    background-color: brown;
+    color: white;
+}
+
+
+#search_area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 40%;
+}
+
+.search_form {
+    display: flex;
+    width: 100%;
+}
+
+#all_filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+#search_input {
+    padding: 8px;
+    border: 1px solid brown;
+    border-radius: 20px;
+    width: 90%;
+}
+#search_and_filter
+{
+    display: block;
+}
+#search_and_filter button {
+    width: 30%;
+    margin: auto;
+    display: block;
+    background-color: white;
+    color: brown;
+    border: 1px solid brown;
+    border-radius: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search_area button:hover {
+    background-color: brown;
+    color: white;
+}
+
+#sort_area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+}
+.sort {
+    background-color: white;
+    border: 1px solid brown;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+    color: brown;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sort:hover {
+    background-color: brown;
+    color: white;
+}
+
+.nyil{
+    float: right;
+    margin-right: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 45px;
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+hr{
+    border: 1px solid black;
+    width: 98%;
+    margin: auto;
+    border-radius: 3px;
+}
+#products_container{
+    align-items: center;
+    width: 90%;
+    margin: 0;
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 30px;
+    margin-left: -50px;
+}
+.product{
+    background-color: rgb(227, 186, 120);
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+.img_holder{
+    overflow: hidden; /* Levágja a kilógó részeket */
+    position: relative;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 150px;
+}
+
+.product img{
+    border: 1px solid red;
+    width: 100%; /* Szélesség a tartalomhoz igazítva */
+    height: auto; /* Magasság automatikusan */
+    position: absolute; /* Pozicionálás, hogy a levágást lehessen kezelni */
+    top: 50%; /* Kép függőleges középre igazítása */
+    left: 50%; /* Kép vízszintes középre igazítása */
+    transform: translate(-50%, -50%); /* Kép középre igazítása */
+    object-fit: cover; /* Kép levágása anélkül, hogy torzuljon */
+}
+.product .name{
+    margin-top: 20px;
+    font-size: 30px;
+    margin-left: 40px;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+.product .price{
+    margin-left: 40px;
+    font-size: 20px;
+}
+.set_quantity_area{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.set_quantity_area .quantity-control{
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+.set_quantity_area .quantity-control:hover{
+    transform: scale(1.3);
+    cursor:pointer;
+}
+.set_quantity_area div:first-child{
+    padding-top: 2px;
+}
+.set_quantity_area div:last-child{
+    padding-left: 6px;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.set_quantity_area input{
+
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    background-color: transparent;
+    font-size: 70px;
+    padding-left: 15px;
+    padding-top: 7px;
+    border: none;
+
+}
+
+.set_quantity_area input:focus{
+    outline: none;
+}
+.add_chart{
+    width: 40%;
+    margin: auto;
+    display: block;
+    height: 50px;
+    text-align: center;
+    background-color: white;
+    color: red;
+    border: none;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.add_chart:hover{
+    border: 2px solid red;
+    background-color: rgb(232, 240, 247);
+}
+#second_line{
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 50%;
+
+}
+#page_number{
+    margin: auto;
+    width: 53%;
+    display: flex;
+    justify-content:space-between;
+    padding-bottom: 50px;
+}
+#page_number div{
+    padding-top: 15px;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+.arrow{
+    width: 12%;
+    transition: transform 0.3s ease;
+}
+.arrow:hover{
+    transform: scale(1.1);
+}
+
+@media (max-width: 1024px){
+    #all_filters {display: block;    }
+    #filter_label{margin-bottom: 15px;}
+    #products_container {
+        grid-template-columns: repeat(2, 2fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 600px){
+    #tartalom{
+        width: 90%;
+    }
+    #all_filters {display: block;    }
+    #filter_label{margin-bottom: 15px;}
+    #products_container{ display: block; width: 90%; margin: auto}
+    .product{
+        width: 80%;
+        margin: auto;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+}

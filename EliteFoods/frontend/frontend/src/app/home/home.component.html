@@ -1,0 +1,66 @@
+
+<div id="body">
+
+
+    <main>
+        <div class="main-container">
+            <div class="main-hero-section">
+                <img src="../../assets/images/EliteFoodsMain.jpg" alt="main hero image">
+                <div>
+                    <h1>Welcome to EliteFoods</h1>
+                    <h2>Where we value customers over profits</h2>
+                </div>
+            </div>
+            <div class="about-us-section">
+                <div class="section-container">
+                    <div class="text-container">
+                        <h2>About us</h2>
+                        <p>
+                            We are a family owned digital
+                            grocery store, stationed in
+                            Chicago. We work hard to
+                            deliver the best and highest
+                            quality foods for you.
+                        </p>
+                    </div>
+
+                </div>
+                <img src="../../assets/images/EliteFoods1.jpg" alt="about us">
+            </div>
+
+            <div class="about-us-section">
+                <img src="../../assets/images/EliteFoods2.webp" alt="about us">
+                <div class="section-container">
+                    <div class="text-container">
+                        <h2>Our mission</h2>
+                        <p>
+                            We want to make sure people
+                            have a place where they can
+                            order healthy, and affordable
+                            food from the comfort of their
+                            home.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="call-to-action-container" >
+                <div class="call-to-action-container" *ngIf="!logged"> <!--th:if="${user == null}" -->
+                    <h1>Join us</h1>
+                    <a class="main-button regular" routerLink="/register">Sign up <img src="../../assets/icons/external_link_arrow.png" alt="external link arrow"></a>
+
+                    <p>Already a member? <a routerLink="/login">Log in <img src="../../assets/icons/external_link_arrow.png" alt="external link arrow"></a></p>
+                </div>
+
+            </div>
+            <div class = "call-to-action-container"> <!-- th:if="${user != null}" -->
+                <h1>Browse our products!</h1>
+                <a routerLink="/products"class="main-button regular width-fit-content">View Products</a>
+
+            </div>
+        </div>
+    </main>
+
+</div>
+
+

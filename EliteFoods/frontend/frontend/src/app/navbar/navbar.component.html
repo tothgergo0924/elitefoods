@@ -1,0 +1,57 @@
+
+<header>
+    <nav >
+        <div class="nav-container">
+            <div class="hamburger-menu" id="hamburger-menu" (click)="toggleNav()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul id="nav-links">
+                <li>
+                    <a routerLink="/home" id="home-anchor">Home</a>
+                </li>
+                <li id="products-li" *ngIf="logged">
+                    <a routerLink="/products" id="products-anchor">Products</a>
+                </li>
+                <li id="productsCRUD-li" *ngIf="logged&&admin">
+                    <a routerLink="/productscrud" id="productsCRUD-anchor" >ProductsCRUD</a>
+                </li>
+                <li id="userCRUD-li" *ngIf="logged&&admin" >
+                    <a routerLink="/usercrud" id="userCRUD-anchor">UserCRUD</a>
+                </li>
+                <li class="right-side-li" *ngIf="!logged"><a routerLink="/login" id="login-anchor" >Log in</a></li>
+                <li class="profile-icon-nav right-side-li" *ngIf="logged" >
+                    <a routerLink="/profile">
+                        <img src="../../assets/icons/default_pfp.jpg" alt="profile picture">
+                    </a>
+                </li>
+                <li class="main-button right-side-li" *ngIf="!logged">
+                    <a routerLink="/register">
+                    Sign up
+                    </a>
+                    <a routerLink="/register">
+                        <img src="../../assets/icons/external_link_arrow.png" alt="External link icon">
+                    </a>
+                </li>
+                <li class="main-button right-side-li" *ngIf="logged" >
+                    <form (ngSubmit)="onSubmit()"><a (click)="onSubmit()" style="color:black;">Logout</a></form>
+                    
+                </li>
+                <li id="cart-li" class="right-side-li" *ngIf="logged">
+                    <a routerLink="/cart" class="nav-link">
+                        <img src="../../assets/icons/cart.png" alt="External link icon">
+                        <span id="cart-count" >{{cart}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <script src="../../assets/js/NavLinkHighlighter.js" defer></script>
+        <script src="../../assets/js/navbar.js" defer></script>
+    </nav>
+
+
+<router-outlet></router-outlet>
+<footer>
+    <app-footer></app-footer>
+</footer>

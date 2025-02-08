@@ -1,0 +1,71 @@
+body{
+    background-color: #FFF1C2;
+    margin: 0;
+}
+h1{
+    font-family: Calibri, serif;
+    font-size: 75px;
+    margin-top: 120px;
+    margin-bottom: 1px;
+    font-weight: 400;
+}
+h2{
+    font-family: Calibri, serif;
+    margin-bottom: 40px;
+    font-weight: 500;
+
+}
+.szoveg{
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.egesz{
+    text-align: center;
+
+}
+.vonal{
+    width: 350px;
+    height: 1px;
+    background-color: black;
+    margin:auto;
+
+}
+.mezo{
+    border-radius: 100px;
+    margin-bottom: 35px;
+    margin-top: 20px;
+
+}
+input{
+
+    padding: 12px 70px 12px 12px;
+    border-radius: 15px;
+    border: 2px solid red;
+    font-size: 11pt;
+
+}
+
+button{
+    font-size: 25pt;
+    font-family: Calibri, serif;
+    font-weight: 500;
+    padding: 20px 100px 20px 100px;
+    border-radius: 30px;
+    color: red;
+    border: none;
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.2);
+    background: #fef2f2;
+    cursor: pointer;
+}
+button:active {
+    transform: scale(0.99) translateY(1px);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.success {
+    color: green;
+  }
+  
+  .error {
+    color: red;
+  }

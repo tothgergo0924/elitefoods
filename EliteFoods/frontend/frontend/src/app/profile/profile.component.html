@@ -1,0 +1,180 @@
+
+
+
+
+<div class="egesz">
+    <h1>Your Profile</h1>
+    <h2>You can modify your data here.</h2>
+   <h2 class="e">Scroll down to see your purchase history</h2>
+</div>
+
+<div class="oszlop">
+    <div class="margo">
+        <img class="icon" src="../../assets/icons/default_pfp.jpg" alt="profile">
+    </div>
+
+    <div class="vertical-line"></div>
+
+    <div class="joszlop">
+        <form (ngSubmit)="save()">
+            <h2 class="j">Change Username</h2>
+            <input type="text" id="username" name="username" 
+                   
+                   minlength="3" maxlength="20"[(ngModel)]="dataListed.felhasznalonev" required >
+            <span class="error-message"></span>
+            <br>
+            <button type="submit" class="s-white-button">Change username</button>
+        </form>
+        <hr class="m">
+        <form (ngSubmit)="save()">
+            <h2 class="j">Change Email Address</h2>
+            <input type="email" id="email" name="email" [(ngModel)]="dataListed.email_cim"
+            
+                   required>
+            <span class="error-message"></span>
+            <br>
+            <button type="submit" class="s-white-button">Change email address</button>
+        </form>
+    </div>
+</div>
+
+
+<hr>
+<div class="containerr">
+    <div class="bali">
+        <h2 class="i">Change first name</h2>
+        <form (ngSubmit)="save()">
+            <label for="fname"></label>
+            <input type="text" id="fname" name="keresztnev" 
+                
+                   pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s]+"
+                   title="Csak betűket használj." [(ngModel)]="dataListed.keresztnev" required>
+            <button type="submit" class="s-white-button">Change first name</button>
+        </form>
+    </div>
+    <div class="kozep">
+        <h2 class="i">Change phone number</h2>
+        <form (ngSubmit)="save()">
+            <label for="pnumber"></label>
+            <input type="tel" id="pnumber" [(ngModel)]="dataListed.telefonszam" name="telefonszam" 
+                
+                   pattern="^\+36\s\d{2}\s\d{3}\s\d{4}$"
+                   title="Használj ilyen formátumot: +36 70 123 4567" required>
+            <button type="submit" class="s-white-button">Change phone number</button>
+        </form>
+    </div>
+    <div class="jobbi">
+        <h2 class="i">Change last name</h2>
+        <form (ngSubmit)="save()">
+            <label for="lname"></label>
+            <input type="text" id="lname" name="vezeteknev" 
+                   [(ngModel)]="dataListed.vezeteknev"
+                   pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s]+"
+                   title="Csak betűket használj." required>
+            <button type="submit" class="s-white-button">Change last name</button>
+        </form>
+    </div>
+</div>
+<hr>
+<p class="cha">Change Your Address</p>
+
+<form (ngSubmit)="save()">
+<div class="containerr">
+    <div class="bal">
+        <label for="country"></label>
+        <input type="text" id="country" name="cim.orszag" 
+               [(ngModel)]="dataListed.cim.orszag"
+               pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s]+"
+               title="Csak betűket használj." required>
+    </div>
+    <div class="kozep">
+        <label for="city"></label>
+        <input type="text" id="city" name="cim.varos" 
+               [(ngModel)]="dataListed.cim.varos"
+               pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s]+"
+               title="Csak betűket használj." required>    </div>
+    <div class="jobb">
+        <label for="code"></label>
+        <input type="text" id="code" name="cim.iranyitoszam" 
+               [(ngModel)]="dataListed.cim.iranyitoszam"
+               pattern="\d{4}"
+               title="Csak 4 számjegyet adj meg." required>    </div>
+</div>
+
+<div class="container2">
+    <div class="bal">
+        <label for="street"></label>
+        <input type="text" id="street" name="cim.kozterulet" 
+               [(ngModel)]="dataListed.cim.kozterulet"
+               title="Adjon meg egy érvényes utcanevet." required>
+    </div>
+    <div class="jobb">
+        <label for="hnumber"></label>
+        <input type="text" id="hnumber" name="cim.hazszam" 
+               [(ngModel)]="dataListed.cim.hazszam"
+               title="Adjon meg egy érvényes házszámot." required>
+    </div>
+
+</div>
+<div style="text-align: center;">
+    <button type="submit" class="white-button">Change address</button>
+
+</div>
+
+
+</form>
+<div class="error-container" *ngIf="error" >
+    <ul>
+        <li >{{error}}</li>
+    </ul>
+</div>
+<div class="success-container" *ngIf="message" >
+    <ul>
+        <li >{{message}}</li>
+    </ul>
+</div>
+<hr>
+<div style="text-align: center;">
+    <h3>Your purchase history</h3>
+</div>
+
+
+
+<div class="cart-container">
+    <div class="cart-items">
+        <div  class="empty-cart-message" *ngIf="orders.length===0">
+            <p>Your purchase history is empty!</p>
+        </div>
+        <div class="cart-item" *ngFor="let order of orders">
+            <img *ngIf="order.termekek.length!==0" [src]="'http://161.35.204.146:8080/assets/images/products/'+order.termekek[0].kep" alt="Item image">
+            <img *ngIf="order.termekek.length===0" [src]="'http://161.35.204.146:8080/assets/images/products/alma.jpg'" alt="Item image">
+            <div class="item-details">
+                <a class="item-name" (click)="details(order)" style="cursor: pointer;"> Rendelés részletei</a>
+                <p > {{order.datum}}</p>
+                <p >{{order.osszeg+"Ft"}}</p>
+            </div>
+
+            <form (ngSubmit)="deleteOrder(order.azonosito)"  >
+                <button type="submit" class="remove-button">
+                    <img src="../../assets/icons/trashcan_red.png">
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div style="height: 100px;">
+
+</div>
+<div style="text-align: center;">
+    <form (ngSubmit)="deleteProfile()">
+
+        <button type="submit">
+            Delete profile <img class="icon"  src="../../assets/icons/trashcan.png" alt="icon">
+        </button>
+        </form>
+</div>
+
+

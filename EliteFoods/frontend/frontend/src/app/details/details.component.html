@@ -1,0 +1,43 @@
+<div style="text-align: center;">
+    <h1>Shopping session details</h1>
+    <p class="subtitle">These are the products you’ve purchased</p>
+    
+</div>
+
+<div class="cart-container">
+    <div class="cart-items">
+
+        <div class="empty-cart-message" *ngIf="order?.termekek?.length===0">
+            <p>Your order is empty!</p>
+        </div>
+        <div *ngIf="order?.termekek!==null">
+            <div  class="cart-item" *ngFor="let product of order?.termekek">
+                <img [src]="'http://161.35.204.146:8080/assets/images/products/' + product.kep" alt="Item image">
+                <div class="item-details">
+                    <p class="item-name" >{{product.nev}}</p>
+                    <p>Quantity: <span >{{product.mennyiseg}}</span></p>
+                    <p>Price: <span>{{product.ar}}</span></p>
+                </div>
+            </div>
+        </div>
+        
+
+        <!--
+        <div class="cart-item">
+            <img th:src="@{/images/avocado.jpg}" alt="Item image">
+            <div class="item-details">
+                <p class="item-name">Avocado</p>
+                <p>Quantity: <span>1</span></p>
+                <p>Price: (Quantity * Unit price) : <span>$14.88</span></p>
+            </div>
+
+            <button type="submit" class="remove-button">
+                <img th:src="@{/icons/trashcan_red.png}">
+            </button>
+
+        </div>
+        -->
+
+    </div>
+</div>
+

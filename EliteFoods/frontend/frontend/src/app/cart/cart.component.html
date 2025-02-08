@@ -1,0 +1,72 @@
+<div style="text-align: center;">
+    <h1>Your cart's contents</h1>
+    <p class="subtitle">Scroll down for the checkout section</p>
+</div>
+
+
+<div class="cart-container">
+    <div class="cart-items">
+
+        <!-- Display message if cart is empty -->
+        <div class="empty-cart-message" *ngIf="cartItems.length===0">
+            <p>Your cart is empty!</p>
+        </div>
+
+        <!-- Iterate over cart items -->
+        <div  class="cart-item" *ngFor="let cart of cartItems">
+            <img [src]="'http://161.35.204.146:8080/assets/images/products/' + cart.kep" alt="Item image">
+            <div class="item-details">
+                <p class="item-name" >{{cart.nev}}</p>
+                <p>Quantity: <span >{{cart.mennyiseg}}</span></p>
+                <p>Price: <span >{{cart.ar}}</span></p>
+            </div>
+            <form (ngSubmit)="remove(cart)">
+                <input type="hidden" name="productId"  />
+                <button type="submit" class="remove-button">
+                    <img src="../../assets/icons/trashcan.png" alt="Remove">
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="total">
+    Total: <span >{{total}} Ft</span>
+</div>
+
+<div class="checkout-section">
+    <h2>Checkout</h2>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+      <div class="checkout-form">
+        <input type="text" class="checkout-input" formControlName="cardNumber" placeholder="Card number (XXXX-XXXX-XXXX-XXXX)">
+        <div *ngIf="cardNumber?.invalid && (cardNumber?.touched || cardNumber?.dirty)" class="error-message">
+          Please enter a valid card number in the format XXXX-XXXX-XXXX-XXXX.
+        </div>
+        
+        <input type="text" class="checkout-input" formControlName="nameOnCard" placeholder="Name on card">
+        <div *ngIf="nameOnCard?.invalid && (nameOnCard?.touched || nameOnCard?.dirty)" class="error-message">
+          Please enter a valid name (letters and spaces only).
+        </div>
+        
+        <div class="input-container">
+          <input type="text" class="checkout-input" formControlName="expiryDate" placeholder="Date of exp.: (MM/YY)">
+          <input type="text" class="checkout-input" formControlName="cvc" placeholder="CVC: (XXX)">
+        </div>
+  
+        <div *ngIf="expiryDate?.invalid && (expiryDate?.touched || expiryDate?.dirty)" class="error-message">
+          Please enter a valid expiration date in the format MM/YY.
+        </div>
+        <div *ngIf="cvc?.invalid && (cvc?.touched || cvc?.dirty)" class="error-message">
+          Please enter a valid 3-digit CVC.
+        </div>
+      </div>
+      <button type="submit" class="purchase-btn" [disabled]="checkoutForm.invalid">Purchase</button>
+    </form>
+  </div>
+  
+  <div *ngIf="successMessageVisible" style="text-align: center;color:green;font-size:50px;">
+   {{message}}
+  </div>
+  <div *ngIf="error" style="text-align: center;color:red;font-size:20px;"> {{error}}</div>
+  
+

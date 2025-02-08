@@ -1,0 +1,106 @@
+<main>
+    <!-- Error Messages Section -->
+    <div  class="error-container" *ngIf="error">
+        <ul>
+            <li  >{{error}}</li>
+        </ul>
+    </div>
+    <div>
+        <ul class="success-container" *ngIf="message">
+            <li  >{{message}}</li>
+        </ul>
+    </div>
+    <h2>Add New Product</h2>
+    <form id="new" (ngSubmit)="onSubmit()" enctype="multipart/form-data" >
+
+        <div class="group">
+            <label for="name">Name:</label><br>
+            <input type="text" name="nev" id="name" [(ngModel)]="products.nev" required>
+        </div>
+
+        <div class="group">
+            <label for="price">Price (Ft):</label><br>
+            <input type="number" name="ar" id="price" [(ngModel)]="products.ar" required>
+        </div>
+
+        <div class="group">
+            <label for="date">Expiration Date:</label><br>
+            <input type="date" name="lejarati_datum" [(ngModel)]="products.lejarati_datum" id="date" >
+        </div>
+
+        <div class="group">
+            <label for="quantity">Quantity:</label><br>
+            <input type="number" name="mennyiseg" id="quantity" [(ngModel)]="products.mennyiseg" required>
+        </div>
+
+        <div class="group">
+            <label>Choose Category:</label><br>
+            <select name="kategoria_id" [(ngModel)]="products.kategoria.azonosito" required >
+                <option  *ngFor="let category of categories" [value]="category.azonosito" >{{category.nev}}</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <label for="image">Image:</label><br>
+            <input type="file" name="image" (change)="onFileChange($event)" id="image">
+        </div>
+
+        <input type="submit" value="Add Product">
+    </form>
+
+
+    <hr>
+    <div class="error-container" *ngIf="updateError" >
+        <ul>
+            <li >{{updateError}}</li>
+        </ul>
+    </div>
+    <div class="success-container" *ngIf="updateMessage" >
+        <ul>
+            <li >{{updateMessage}}</li>
+        </ul>
+    </div>
+    
+    <h2>Manage Products</h2>
+    <div *ngIf="loading"><h3>Loading...</h3></div>
+    <table *ngIf="!loading">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price (Ft)</th>
+            <th>Expiration Date</th>
+            <th>Quantity</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of productsListed">
+            <!-- Update form for each product -->
+            
+                <td><form (ngSubmit)="save(product)">
+                        <input type="text" name="nev" [(ngModel)]="product.nev"  required>
+                    </form>
+                </td>
+                <td><form (ngSubmit)="save(product)">
+                    <input type="number" name="ar"  [(ngModel)]="product.ar" required>
+                </form></td>
+                
+                    
+                <td><form (ngSubmit)="save(product)">
+                    <input type="date" name="lejarati_datum" [(ngModel)]="product.lejarati_datum" ></form></td>
+                <td><form (ngSubmit)="save(product)"><input type="number" [(ngModel)]="product.mennyiseg" name="mennyiseg"  required></form></td>
+                <td><form (ngSubmit)="save(product)"><input type="text" name="kep" [(ngModel)]="product.kep" readonly></form></td>
+                <td><form (ngSubmit)="save(product)">
+                    <button type="submit">Update</button></form></td>
+            
+            <!-- Delete form for each product -->
+            <td>
+                <form (ngSubmit)="delete(product)">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>

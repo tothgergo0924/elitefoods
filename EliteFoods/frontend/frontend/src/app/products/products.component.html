@@ -1,0 +1,87 @@
+<div id="tartalom">
+
+    
+        <div id="all_filters">
+            <div *ngIf="loading"> Loading...</div>
+            <div *ngIf="error">{{error}}</div>
+            <div id="filter_label" *ngIf="!loading && !error">Filters</div>
+
+            <!-- Filters Area -->
+            <div id="filters_area">
+                <div  class="filter" *ngFor="let category of categories">
+                    <label>
+                        <input type="checkbox" name="categories" [value]="category.azonosito" (change)="onCategoryChange($event,category.azonosito)">
+                        <span >{{category.nev}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>     
+            <!-- Search and Sort Area -->
+            <div id="search_area">
+                <div class="search_form">
+                   
+                    <input type="text" [(ngModel)]="search" (input)="onFilterChange()" id="search_input"  placeholder="Enter your query">
+
+
+                </div>
+            </div>
+                <div id="sort_area">
+                    
+                        <label>
+                            <span>Filter by</span>
+                            <br>
+                            <select [(ngModel)]="sortBy" (change)="onFilterChange()">
+                                <option value="id">Default</option>
+                                <option value="name">Name</option>
+                                <option value="price">Price</option>
+                                <option value="expiryDate">Expiry Date</option>
+                            </select>
+                            
+                        </label>
+                        
+                    
+                    
+                    
+                </div>
+
+            
+        
+
+        
+    
+    <h1>Trending products</h1>
+    <hr>
+    <div *ngIf="loadingproducts"> Loading...</div>
+   
+    <div *ngIf="products.length===0&&!loadingproducts">  <br>There are no products that match your filters</div>
+    <div id="products_container" *ngIf="!loadingproducts && !error">
+        
+        <div  class="product" *ngFor="let product of products">
+            <div class="img_holder">
+                <img [src]="'http://161.35.204.146:8080/assets/images/products/' + product.kep" alt="Product image" />
+            </div>
+
+            <div class="name" >{{product.nev}}</div>
+            <div class="price" >{{product.ar}} Ft</div>
+
+            <form (ngSubmit)="addToCart(product)" class="cart-form" *ngIf="authenticated">
+                <input type="hidden" name="azonosito"  />
+                <input type="hidden" name="nev"  />
+                <input type="hidden" name="kep" />
+                <input type="hidden" name="ar" />
+
+                <div class="set_quantity_area">
+                    <div class="quantity-control" (click)="decrementQuantity(product)">-</div>
+                    <input type="number" [value]="product.quantity" name="mennyiseg" value="0" min="1" readonly />
+                    <div class="quantity-control" (click)="incrementQuantity(product)">+</div>
+                </div>
+
+                <button type="submit" class="add_chart">Add to cart</button>
+            </form>
+        </div>
+    </div>
+   
+    
+</div>
+
+

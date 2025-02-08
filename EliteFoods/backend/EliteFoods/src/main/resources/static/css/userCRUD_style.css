@@ -1,0 +1,190 @@
+html{
+    background-color: #FFF1C1;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+    margin:0px;
+}
+
+main{
+    margin: auto;
+    margin-top: 50px;
+    display: block;
+    width: 60%;
+}
+
+#new{
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    text-align: center;
+}
+#new input{
+    width: 50%;
+    height: 30px;
+    border-radius: 15px;
+    margin-top: 10px;
+    font-size: 17px;
+    padding-left: 20px;
+}
+#radios{
+    text-align: left;
+    margin-left: 40%;
+}
+#new input[type="radio"]{
+    height: 20px;
+    width: 20px;
+}
+#new input[type="file"]{
+    border-radius: 0px;
+}
+#new label{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+#category_label{
+    font-size: 20px;
+}
+#price{
+    -moz-appearance: textfield;
+}
+#checkboxes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 70px;
+    width: 50%;
+    margin: auto;
+    text-align: left;
+}
+.alert{
+    color: red;
+    margin-top: 0px;
+    font-size: 15px;
+}
+#new input[type="submit"]{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin: auto;
+    height: 50px;
+    background-color: white;
+    border: 2px solid saddlebrown;
+    font-size: 20px;
+    color: saddlebrown;
+    font-weight: bold;
+
+}
+#new input[type="submit"]:hover{
+    border-color: #F1BE63;
+    text-decoration: underline;
+}
+hr{
+    border: 1px solid black;
+    width: 98%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 3px;
+}
+#users{
+    max-height: 240px;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+#users::-webkit-scrollbar {
+    width: 12px;
+}
+
+#users::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#users::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+.user{
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
+    height: 60px;
+    padding-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.user div{
+    flex: 1;
+    align-items: center;
+}
+.user div:first-child{
+    flex: 0.5;
+}
+.user div:last-child{
+    flex: 0.5;
+}
+.user img{
+    width: 40%;
+    border-radius: 50%;
+}
+.user button{
+    background-color: #ffe4e4;
+    border-color: #ffa0a0;
+    border-radius: 10px;
+    padding: 0px;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+}
+.user button img{
+    width: 46px;
+    height: 80%;
+    margin: auto;
+}
+table{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 100px;
+}
+td{
+    width: 20%;
+}
+td input{
+    width: 90%;
+}
+td input[type="date"]{
+    width: 95%;
+}
+
+@media (max-width: 1024px){
+    #new{display: block;}
+    #new input[type="submit"]{width: 50%;margin: auto; margin-top: 20px}
+    main{width: 95%; margin: auto}
+}
+@media (max-width: 700px){
+    .user{font-size: 16px; padding-left: 15px;}
+    .user div:first-child{
+        flex: 0;
+    }
+    .user div:nth-child(2){
+        flex: 0.3;
+    }
+    .email{overflow-x: scroll}
+
+    .user button{width: 30px; height: 25px;}
+    .user button img{width: 28px; height: 80%;}
+    table{width: 95%; margin: auto;}
+}
+
